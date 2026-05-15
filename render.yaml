@@ -1,0 +1,20 @@
+services:
+  - type: web_service
+    name: trading-bots-backend
+    env: node
+    region: oregon
+    plan: free
+    branch: master
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/status
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3001"
+      - key: BINANCE_API_KEY
+        sync: false
+      - key: BINANCE_SECRET_KEY
+        sync: false

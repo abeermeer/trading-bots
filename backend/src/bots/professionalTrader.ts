@@ -71,7 +71,7 @@ class ProfessionalTrader {
       await this.tradingCycle();
     }, 60000);
 
-    this.tradingCycle();
+    setTimeout(() => this.tradingCycle(), 1000);
   }
 
   stop(): void {

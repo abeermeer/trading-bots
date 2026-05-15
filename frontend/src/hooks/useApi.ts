@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://trading-bots-backend.onrender.com';
 
 export function useApi() {
   const api = axios.create({ baseURL: API_BASE });
@@ -88,7 +88,7 @@ export function useWebSocket() {
   const wsRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
-    const wsUrl = (import.meta.env.VITE_WS_URL || 'ws://localhost:3001') + '/ws';
+    const wsUrl = import.meta.env.VITE_WS_URL || 'wss://trading-bots-backend.onrender.com/ws';
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 
