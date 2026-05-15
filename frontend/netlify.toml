@@ -6,6 +6,7 @@
   from = "/api/*"
   to = "https://trading-bots-backend.onrender.com/api/:splat"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/*"
