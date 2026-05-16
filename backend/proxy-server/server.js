@@ -51,6 +51,12 @@ const server = http.createServer(async (req, res) => {
   const parsed = url.parse(req.url, true);
   const path = parsed.pathname;
 
+  // Health check endpoint (does not call Binance)
+  if (path === "/health" || path === "/api/health") {
+    res.writeHead(200, { "content-type": "application/json" });
+    return res.end(JSON.stringify({ ok: true }));
+  }
+
   // /binance/* -> proxy to api.binance.com or fapi.binance.com
   const match = path.match(/^\/(fapi|api)(\d?)\.binance\.com(\/.*)/);
   if (!match) {
